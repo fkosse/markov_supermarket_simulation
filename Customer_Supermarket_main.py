@@ -45,8 +45,14 @@ class Supermarket:
         self.list = pd.DataFrame(columns=['timestamp', 'customer_name', 'customer_id', 'location'])
         
     def __repr__(self):
-        return self.list.append({'timestamp' : self.time, 'name' : self.name, 'customer_id' : self.customer_id, 'location' : self.location})
+
+        
+       
+
     
+        return f"{self.time}, {self.name}, {self.n_customers}"
+    @property
+
     def get_time(self):
         hour = 7 + self.minutes // 60
         min = self.minutes % 60
@@ -55,7 +61,12 @@ class Supermarket:
     def print_customers(self):
         """print all customers with the current time and id in CSV format.
         """
-        return None
+        for customer in self.customers:
+            timestamp = self.get_time
+            customer_name = customer.name
+            customer_id = customer.id
+            location = customer.location
+            self.list.append({'timestamp' : timestamp, 'name' : customer_name, 'customer_id' : customer_id, 'location' : location})
 
     def next_minute(self): #control our customers
         """propagates all customers to the next state."""
