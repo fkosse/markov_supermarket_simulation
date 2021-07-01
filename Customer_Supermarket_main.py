@@ -1,6 +1,7 @@
 import random 
 import pandas as pd
 import numpy as np
+from faker import Faker
 
 mx=pd.read_csv('mx.csv')
 mx=mx.set_index('before')
@@ -62,9 +63,12 @@ class Supermarket:
             shopper.next_state()
         
     def add_new_customers(self, customer): #create a customer
-        """randomly creates new customers.        """
-
-        self.customers.append(customer) #this function in my supermarket object literally creates other objects
+        """randomly creates new customers."""
+        f = Faker()
+        name = f.name()
+        id = self.last_id
+        self.customers.append(Customer(id, name)) #this function in my supermarket object literally creates other objects
+        self.last_id += 1
     
     def remove_exitsting_customers(self):
         """removes every customer that is not active any more.
