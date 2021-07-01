@@ -79,7 +79,7 @@ class Supermarket:
     def remove_exitsting_customers(self):
         """removes every customer that is not active any more.
         """
-        return None
+        self.customers = [c for c in self.customers if c.active]
    
 if __name__ == "__main__":
     s = Supermarket("Doodl")
