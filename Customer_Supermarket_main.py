@@ -40,14 +40,17 @@ class Supermarket:
         self.customers = []
         self.minutes = 0
         self.last_id = 0
+        self.list = pd.DataFrame(columns=['timestamp', 'customer_name', 'customer_id', 'location'])
         
     def __repr__(self):
         return ''
     
     def get_time(self):
-        """current time in HH:MM format,
-        """
+        hour = 7 + self.minutes // 60
+        min = self.minutes % 60
+        self.list.append(pd.Timestamp(year=2021, month=7, day=1, hour= hour, minute = min ))
         return None
+
     def print_customers(self):
         """print all customers with the current time and id in CSV format.
         """
