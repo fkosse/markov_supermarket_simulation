@@ -1,38 +1,13 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[200]:
-
-
 import random 
 import pandas as pd
 import numpy as np
-
-
-# In[201]:
-
 
 mx=pd.read_csv('mx.csv')
 mx=mx.set_index('before')
 mx
 
-
-# In[336]:
-
-
-# states\locations
-mx.columns.values
-
-
-# In[544]:
-
-
 # What are the transition probabilities if the current state is fruit
 mx['fruit'][0]
-
-
-# In[602]:
-
 
 class Customer:
     """
@@ -56,10 +31,6 @@ class Customer:
             return False
         else:
             return True
-
-
-# In[603]:
-
 
 class Supermarket:
     """manages multiple Customer instances that are currently in the market.    """
@@ -96,102 +67,22 @@ class Supermarket:
         """removes every customer that is not active any more.
         """
         return None
-    
-
-            
-
-
-# In[ ]:
-
-
-
-
-
-# In[609]:
-
-
+   
 s = Supermarket()
 s.add_new_customers(Customer('Narges'))
 
-
-# In[610]:
-
-
 s.add_new_customers(Customer('Felix'))
-
-
-# In[611]:
-
 
 #all customers start at entrance
 s.customers
 
-
-# In[622]:
-
-
 #run this multiple times
 s.next_minute()
 
-
-# In[621]:
-
-
 s.customers
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[626]:
-
 
 # Fake name generator
 from faker import Faker
 name = Faker().name()
 
-
-# In[627]:
-
-
 name
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
