@@ -12,7 +12,7 @@ mx['fruit'][0]
 
 class Customer:
     """
-    a single customer that moves through the supermarket in a MCMC simulation """
+    a single customer that moves through the supermarket in a MCMC simulation. """
     
     def __init__(self, id, name):
         self.id=id
@@ -73,7 +73,7 @@ class Supermarket:
     def remove_exitsting_customers(self):
         """removes every customer that is not active any more.
         """
-        self.customers = [c for c in self.customers if c.active]
+        self.customers = [i for i in self.customers if c.active]
    
 if __name__ == "__main__":
     s = Supermarket("Doodl")
@@ -81,3 +81,4 @@ if __name__ == "__main__":
         s.next_minute()
         s.add_new_customers()
         s.remove_exited_customers()
+
