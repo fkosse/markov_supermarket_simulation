@@ -49,8 +49,7 @@ class Supermarket:
     def get_time(self):
         hour = 7 + self.minutes // 60
         min = self.minutes % 60
-        self.list.append(pd.Timestamp(year=2021, month=7, day=1, hour= hour, minute = min ))
-        return None
+        return pd.Timestamp(year=2021, month=7, day=1, hour= hour, minute = min)
 
     def print_customers(self):
         """print all customers with the current time and id in CSV format.
@@ -72,24 +71,9 @@ class Supermarket:
         """
         return None
    
-s = Supermarket()
-s.add_new_customers(Customer('Narges'))
-
-s.add_new_customers(Customer('Felix'))
-
-#all customers start at entrance
-s.customers
-
-#run this multiple times
-s.next_minute()
-
-s.customers
-
-# Fake name generator
-from faker import Faker
-name = Faker().name()
-
-name
-
-
-'Hello'
+if __name__ == "__main__":
+    s = Supermarket("Doodl")
+    for i in range(SIMULATE_MINUTES):
+        s.next_minute()
+        s.add_new_customers()
+        s.remove_exited_customers()
