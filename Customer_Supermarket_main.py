@@ -44,8 +44,8 @@ class Supermarket:
         self.list = pd.DataFrame(columns=['timestamp', 'customer_name', 'customer_id', 'location'])
         
     def __repr__(self):
-        return self.list.append({'timestamp' : self.time, 'name' : self.name, 'customer_id' : self.customer_id, 'location' : self.location})
-    
+        return f"{self.time}, {self.name}, {self.n_customers}"
+       
     def get_time(self):
         hour = 7 + self.minutes // 60
         min = self.minutes % 60
