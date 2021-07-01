@@ -13,8 +13,9 @@ class Customer:
     """
     a single customer that moves through the supermarket in a MCMC simulation """
     
-    def __init__(self, id):
+    def __init__(self, id, name):
         self.id=id
+        self.name = name
         self.location='entrance'
         self.transition_probs=mx
 
