@@ -88,6 +88,7 @@ if __name__ == "__main__":
     s = Supermarket()
     for i in range(SIMULATE_MINUTES):
         'Hello from Daria from home!'
+        'Hello from Felix, here'
         s.next_minute()
         s.add_new_customers()
         s.remove_exited_customers()
