@@ -88,6 +88,7 @@ if __name__ == "__main__":
     for i in range(SIMULATE_MINUTES):
         'Hello from Daria again'
         'Hello from Felix, here'
+        'Hello from Felixes to Daria!'
         s.next_minute()
         s.add_new_customers()
         s.remove_exited_customers()
