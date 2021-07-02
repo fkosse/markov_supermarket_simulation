@@ -11,7 +11,6 @@ SIMULATE_MINUTES = 15
 class Customer:
     """
     a single customer that moves through the supermarket in a MCMC simulation.
-    I want to add bla bla something
     new line
     """
     
