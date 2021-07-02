@@ -13,6 +13,8 @@ class Customer:
     a single customer that moves through the supermarket in a MCMC simulation.
     more comments
     more comments
+    more comments
+    more comments
     """
     
     def __init__(self, id, name):
