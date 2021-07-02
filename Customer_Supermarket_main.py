@@ -5,10 +5,8 @@ from faker import Faker
 
 mx=pd.read_csv('mx.csv')
 mx=mx.set_index('before')
-mx
 
-# What are the transition probabilities if the current state is fruit
-mx['fruit'][0]
+SIMULATE_MINUTES = 15
 
 class Customer:
     """
@@ -19,9 +17,9 @@ class Customer:
         self.name = name
         self.location='entrance'
         self.transition_probs=mx
-
+        
     def __repr__(self):
-        return f'Customer {self.id} is in {self.location}'
+        return f"{self.name}, customer {self.id}, is in {self.location}"
     
     def next_state(self):
         ''' Propagates the customer to the next state. Returns nothing.   '''
@@ -42,54 +40,53 @@ class Supermarket:
         self.customers = []
         self.minutes = 0
         self.last_id = 0
-        self.list = pd.DataFrame(columns=['timestamp', 'customer_name', 'customer_id', 'location'])
-        
-    def __repr__(self):
-
-        
-       
-
-    
-        return f"{self.time}, {self.name}, {self.n_customers}"
-    @property
+        self.list = pd.DataFrame(columns=['timestamp', 'id', 'name', 'location'])
 
     def get_time(self):
         hour = 7 + self.minutes // 60
         min = self.minutes % 60
-        return pd.Timestamp(year=2021, month=7, day=1, hour= hour, minute = min)
-
+        self.timestamp = pd.Timestamp(year=2021, month=7, day=1, hour= hour, minute = min)
+        return None
+    
     def print_customers(self):
         """print all customers with the current time and id in CSV format.
         """
         for customer in self.customers:
-            timestamp = self.get_time
+            self.get_time()
+            timestamp = self.timestamp
             customer_name = customer.name
             customer_id = customer.id
             location = customer.location
-            self.list.append({'timestamp' : timestamp, 'name' : customer_name, 'customer_id' : customer_id, 'location' : location})
-
-    def next_minute(self): #control our customers
-        """propagates all customers to the next state."""
-        for shopper in self.customers:
-            shopper.next_state()
-        
-    def add_new_customers(self, customer): #create a customer
+            self.list = self.list.append({'timestamp' : timestamp, 'id' : customer_id, 'name' : customer_name, 'location' : location}, ignore_index = True)
+    
+    def add_new_customers(self): #create a customer
         """randomly creates new customers."""
         f = Faker()
         name = f.name()
         id = self.last_id
         self.customers.append(Customer(id, name)) #this function in my supermarket object literally creates other objects
         self.last_id += 1
+        
+    def next_minute(self): #control our customers
+        """propagates all customers to the next state."""
+        self.minutes += 1
+        for shopper in self.customers:
+            shopper.next_state()
     
-    def remove_exitsting_customers(self):
+    def remove_exited_customers(self):
         """removes every customer that is not active any more.
         """
-        self.customers = [i for i in self.customers if c.active]
-   
+        self.customers = [i for i in self.customers if i.is_active()]
+
+#    def __repr__(self): # needs to be defined what happens when the class is called
+#       return f"{self.time}, {self.name}, {self.n_customers}"
+
+
 if __name__ == "__main__":
-    s = Supermarket("Doodl")
+    s = Supermarket()
     for i in range(SIMULATE_MINUTES):
         s.next_minute()
         s.add_new_customers()
         s.remove_exited_customers()
-
+        s.print_customers()
+    s.list.to_csv('monday.csv')
