@@ -81,18 +81,15 @@ class Supermarket:
         self.customers = [i for i in self.customers if i.is_active()]
 
 #    def __repr__(self): # needs to be defined what happens when the class is called
-#       return f"{self.time}, {self.name}, {self.n_customers}"
 
 
 if __name__ == "__main__":
     s = Supermarket()
     for i in range(SIMULATE_MINUTES):
-        'Hello from Daria from home!'
+        'Hello from Daria again'
         'Hello from Felix, here'
         s.next_minute()
         s.add_new_customers()
         s.remove_exited_customers()
         s.print_customers()
     s.list.to_csv('monday.csv')
-
-
