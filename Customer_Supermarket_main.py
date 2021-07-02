@@ -89,7 +89,6 @@ if __name__ == "__main__":
     for i in range(SIMULATE_MINUTES):
         'Hello from Daria again'
         s.next_minute()
-#blabalbalbalablab
         s.add_new_customers()
         s.remove_exited_customers()
         s.print_customers()
