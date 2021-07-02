@@ -88,7 +88,7 @@ class Supermarket:
 if __name__ == "__main__":
     s = Supermarket()
     for i in range(SIMULATE_MINUTES):
-        'Hello from Felix'
+        'Hello from Daria'
         s.next_minute()
 #blabalbalbalablab
         s.add_new_customers()
