@@ -5,14 +5,15 @@ from faker import Faker
 
 mx=pd.read_csv('mx.csv')
 mx=mx.set_index('before')
-mx
 
 # What are the transition probabilities if the current state is fruit
 mx['fruit'][0]
 
 class Customer:
     """
-    a single customer that moves through the supermarket in a MCMC simulation. """
+    a single customer that moves through the supermarket in a MCMC simulation.
+    more comments
+    """
     
     def __init__(self, id, name):
         self.id=id
