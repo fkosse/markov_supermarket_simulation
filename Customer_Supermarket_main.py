@@ -10,7 +10,9 @@ SIMULATE_MINUTES = 15
 
 class Customer:
     """
-    a single customer that moves through the supermarket in a MCMC simulation. """
+    a single customer that moves through the supermarket in a MCMC simulation.
+    more comments
+    """
     
     def __init__(self, id, name):
         self.id=id
@@ -41,7 +43,6 @@ class Supermarket:
         self.minutes = 0
         self.last_id = 0
         self.list = pd.DataFrame(columns=['timestamp', 'id', 'name', 'location'])
-
     def get_time(self):
         hour = 7 + self.minutes // 60
         min = self.minutes % 60
