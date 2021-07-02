@@ -12,6 +12,7 @@ class Customer:
     """
     a single customer that moves through the supermarket in a MCMC simulation.
     more comments
+    more comments
     """
     
     def __init__(self, id, name):
@@ -35,7 +36,8 @@ class Customer:
             return True
 
 class Supermarket:
-    """manages multiple Customer instances that are currently in the market.    """
+    """manages multiple Customer instances that are currently in the market.    
+    new comments"""
     
     def __init__(self):
         # a list of Customer objects
